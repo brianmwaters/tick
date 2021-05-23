@@ -1,0 +1,6 @@
+tick
+====
+
+tick is a simple clock for minimal window managers like dwm that don't have a
+built-in clock, but instead display the root window name in the status bar. To
+use it, just compile the program and add it to your xsession or xinitrc file.
