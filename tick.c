@@ -1,5 +1,4 @@
 #include <err.h>
-#include <errno.h>
 #include <signal.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -44,13 +43,11 @@ static void set_time(Display *dpy)
 	time_t now;
 	char *str, *nl;
 
-	errno = 0;
 	if (time(&now) == (time_t)-1) {
 		warn("unable to get current time");
 		return;
 	}
 
-	errno = 0;
 	str = ctime(&now);
 	if (str == NULL) {
 		warn("unable to convert time to string");
@@ -85,7 +82,6 @@ int main()
 	(void)sigemptyset(&sa.sa_mask);
 	sa.sa_flags = 0;
 	for (size_t i = 0; i < NITEMS(sigs); i++) {
-		errno = 0;
 		if (sigaction(sigs[i], &sa, NULL) == -1) {
 			err(EXIT_FAILURE, "unable to install signal handler");
 		}
@@ -95,7 +91,6 @@ int main()
 	itv.it_interval.tv_usec = 0;
 	itv.it_value.tv_sec = 1;
 	itv.it_value.tv_usec = 0;
-	errno = 0;
 	if (setitimer(ITIMER_REAL, &itv, NULL) == -1) {
 		err(EXIT_FAILURE, "unable to set interval timer");
 	}
