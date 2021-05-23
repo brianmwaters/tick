@@ -109,6 +109,7 @@ int main()
 	}
 
 	(void)XCloseDisplay(dpy);
+	dpy = NULL;
 
 	return 0;
 }
