@@ -63,7 +63,7 @@ static void set_time(Display *dpy)
 	(void)XFlush(dpy);
 }
 
-int main()
+int main(void)
 {
 	const int sigs[] = { SIGALRM, SIGINT, SIGTERM };
 	Display *dpy = NULL;
