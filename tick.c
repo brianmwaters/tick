@@ -54,7 +54,7 @@ static void set_time(Display *dpy)
 		return;
 	}
 
-	nl = strstr(str, "\n");
+	nl = strchr(str, '\n');
 	if (nl != NULL) {
 		*nl = '\0';
 	}
